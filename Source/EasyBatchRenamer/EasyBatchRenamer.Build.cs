@@ -25,7 +25,7 @@ public class EasyBatchRenamer : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core",
+				"Core", "Slate",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Widgets/SCompoundWidget.h"
 #include "RenamerDataTypes.h"
+#include "Widgets/Input/SSpinBox.h"
 
 class EASYBATCHRENAMER_API SRenamerWidget : public SCompoundWidget
 {
@@ -47,6 +48,11 @@ private:
 	
 	TSharedPtr<SEditableTextBox> FindTextBoxWidget;
 	TSharedPtr<SEditableTextBox> RegexFindTextBoxWidget;
+	TSharedPtr<SEditableTextBox> ReplaceTextBoxWidget;
+	TSharedPtr<SEditableTextBox> PrefixTextBoxWidget;
+	TSharedPtr<SEditableTextBox> SufixTextBoxWidget;
+	TSharedPtr<SSpinBox<int32>>  StartNumberSpinBoxWidget;
+	TSharedPtr<SSpinBox<int32>>  PaddingDigitsSpinBoxWidget;
 	
 	TArray<TSharedPtr<ETextCaseChange>> CaseChangeOptions; 
 	
@@ -142,6 +148,13 @@ private:
 	 * @return ECheckBoxState::Checked 如果启用了正则表达式，否则返回 ECheckBoxState::Unchecked
 	 */
 	ECheckBoxState GetEnableRegexCheckBoxState() const;
+	
+	/**
+	 * @brief 获取“使用编号”复选框的当前状态
+	 * 根据是否启用编号功能返回相应的 ECheckBoxState 状态值
+	 * @return ECheckBoxState::Checked 如果启用了编号功能，否则返回 ECheckBoxState::Unchecked
+	 */
+	ECheckBoxState GetEnableUseNumberingCheckBoxState() const;
 
 	/**
 	 * @brief 获取当前大小写改变选项的文本

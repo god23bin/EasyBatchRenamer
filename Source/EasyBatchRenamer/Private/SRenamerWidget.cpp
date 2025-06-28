@@ -192,7 +192,7 @@ TSharedRef<SWidget> SRenamerWidget::CreateRenameOptionsArea()
                 + SHorizontalBox::Slot()
                 .FillWidth(0.7f)
                 [
-                    SNew(SEditableTextBox)
+                    SAssignNew(ReplaceTextBoxWidget, SEditableTextBox)
                     .Text(FText::FromString(ReplaceText))
                     .OnTextChanged(this, &SRenamerWidget::OnReplaceTextChanged)
                     .HintText(LOCTEXT("ReplaceTextHint", "Text to replace with..."))
@@ -214,7 +214,7 @@ TSharedRef<SWidget> SRenamerWidget::CreateRenameOptionsArea()
                 + SHorizontalBox::Slot()
                 .FillWidth(0.7f)
                 [
-                    SNew(SEditableTextBox)
+                    SAssignNew(PrefixTextBoxWidget, SEditableTextBox)
                     .Text(FText::FromString(PrefixText))
                     .OnTextChanged(this, &SRenamerWidget::OnPrefixTextChanged)
                     .HintText(LOCTEXT("PrefixTextHint", "Add prefix..."))
@@ -235,7 +235,7 @@ TSharedRef<SWidget> SRenamerWidget::CreateRenameOptionsArea()
                 + SHorizontalBox::Slot()
                 .FillWidth(0.7f)
                 [
-                    SNew(SEditableTextBox)
+                    SAssignNew(SufixTextBoxWidget, SEditableTextBox)
                     .Text(FText::FromString(SuffixText))
                     .OnTextChanged(this, &SRenamerWidget::OnSuffixTextChanged)
                     .HintText(LOCTEXT("SuffixTextHint", "Add suffix..."))
@@ -258,6 +258,7 @@ TSharedRef<SWidget> SRenamerWidget::CreateRenameOptionsArea()
                 .FillWidth(0.7f)
                 [
                     SNew(SCheckBox)
+                	.IsChecked(this, &SRenamerWidget::GetEnableUseNumberingCheckBoxState)
                     .OnCheckStateChanged(this, &SRenamerWidget::OnUseNumberingChanged)
                 ]
             ]
@@ -276,7 +277,7 @@ TSharedRef<SWidget> SRenamerWidget::CreateRenameOptionsArea()
                 + SHorizontalBox::Slot()
                 .FillWidth(0.7f)
                 [
-                    SNew(SSpinBox<int32>)
+                    SAssignNew(StartNumberSpinBoxWidget, SSpinBox<int32>)
                     .Value(StartNumber)
                     .OnValueChanged(this, &SRenamerWidget::OnStartNumberChanged)
                     .MinValue(1)
@@ -299,7 +300,7 @@ TSharedRef<SWidget> SRenamerWidget::CreateRenameOptionsArea()
                 + SHorizontalBox::Slot()
                 .FillWidth(0.7f)
                 [
-                    SNew(SSpinBox<int32>)
+                    SAssignNew(PaddingDigitsSpinBoxWidget, SSpinBox<int32>)
                     .Value(PaddingDigits)
                     .OnValueChanged(this, &SRenamerWidget::OnPaddingDigitsChanged)
                     .MinValue(1)
@@ -502,6 +503,26 @@ void SRenamerWidget::ResetAllRulesInternal()
 	if (RegexFindTextBoxWidget.IsValid())
 	{
 		RegexFindTextBoxWidget->SetText(FText::GetEmpty());
+	}
+	if (ReplaceTextBoxWidget.IsValid())
+	{
+		ReplaceTextBoxWidget->SetText(FText::GetEmpty());
+	}
+	if (PrefixTextBoxWidget.IsValid())
+	{
+		PrefixTextBoxWidget->SetText(FText::GetEmpty());
+	}
+	if (SufixTextBoxWidget.IsValid())
+	{
+		SufixTextBoxWidget->SetText(FText::GetEmpty());
+	}
+	if (StartNumberSpinBoxWidget.IsValid())
+	{
+		StartNumberSpinBoxWidget->SetValue(DefaultStartNumber);
+	}
+	if (PaddingDigitsSpinBoxWidget.IsValid())
+	{
+		PaddingDigitsSpinBoxWidget->SetValue(DefaultPaddingDigits);
 	}
 }
 
@@ -873,6 +894,11 @@ bool SRenamerWidget::AreRulesModified() const
 ECheckBoxState SRenamerWidget::GetEnableRegexCheckBoxState() const
 {
 	return bEnableRegexFind ? ECheckBoxState::Checked : ECheckBoxState::Unchecked;
+}
+
+ECheckBoxState SRenamerWidget::GetEnableUseNumberingCheckBoxState() const
+{
+	return bUseNumbering ? ECheckBoxState::Checked : ECheckBoxState::Unchecked;
 }
 
 FText SRenamerWidget::GetCurrentCaseChangeComboBoxText() const
