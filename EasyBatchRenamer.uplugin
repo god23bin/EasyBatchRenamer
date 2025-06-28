@@ -1,0 +1,34 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "EasyBatchRenamer",
+	"Description": "A easy tool that allow you to rename assets in content browser and actors in outliner with one click.",
+	"Category": "Editor",
+	"CreatedBy": "Devil Dev",
+	"CreatedByURL": "https://space.bilibili.com/341183781",
+	"DocsURL": "",
+	"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/9bdaf3ce-7f75-4bbf-a4ea-21cea09ee5f7",
+	"FabURL" : "com.epicgames.launcher://ue/Fab/product/9bdaf3ce-7f75-4bbf-a4ea-21cea09ee5f7",
+	"SupportURL": "",
+	"EngineVersion": "5.5.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "EasyBatchRenamer",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	],
+	"LocalizationTargets": [
+		{
+			"Name": "EasyBatchRenamer",
+			"LoadingPolicy": "Always",
+			"ConfigGenerationPolicy": "Never"
+		}
+	]
+}
