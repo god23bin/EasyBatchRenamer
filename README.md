@@ -4,9 +4,9 @@ A easy tool that allow you to rename assets in Content Browser and actors in Out
 
 Supported languages: Chinese, English, Japanese.
 
-Add to your library on Fab for free: https://www.fab.com/listings/9bdaf3ce-7f75-4bbf-a4ea-21cea09ee5f7
+Add to your library on Fab for free: [https://www.fab.com/listings/47d700af-c8d6-4eeb-86f7-9583391dd47f](https://www.fab.com/listings/47d700af-c8d6-4eeb-86f7-9583391dd47f)
 
-在虚幻商城 Fab 中将该插件免费添加到你的库中：https://www.fab.com/listings/9bdaf3ce-7f75-4bbf-a4ea-21cea09ee5f7
+在虚幻商城 Fab 中将该插件免费添加到你的库中：[https://www.fab.com/listings/47d700af-c8d6-4eeb-86f7-9583391dd47f](https://www.fab.com/listings/47d700af-c8d6-4eeb-86f7-9583391dd47f)
 
 ---
 
